@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1440" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7F8FA"/>
+      <stop offset="1" stop-color="#E7EBF1"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#FF724E"/>
+      <stop offset="1" stop-color="#E63D2E"/>
+    </linearGradient>
+    <filter id="shadow" x="175" y="180" width="1090" height="640" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#202938" flood-opacity=".12"/>
+    </filter>
+  </defs>
+  <rect width="1440" height="900" fill="url(#bg)"/>
+  <circle cx="1270" cy="120" r="270" fill="#F3C2AA" fill-opacity=".19"/>
+  <circle cx="123" cy="794" r="260" fill="#A9C6DA" fill-opacity=".2"/>
+  <g filter="url(#shadow)">
+    <rect x="220" y="205" width="1000" height="550" rx="24" fill="#fff"/>
+    <path d="M244 205h952a24 24 0 0 1 24 24v56H220v-56a24 24 0 0 1 24-24Z" fill="#20252B"/>
+    <circle cx="256" cy="241" r="6" fill="#F0644B"/>
+    <circle cx="278" cy="241" r="6" fill="#F2B44C"/>
+    <circle cx="300" cy="241" r="6" fill="#76B99A"/>
+    <rect x="398" y="230" width="385" height="22" rx="11" fill="#333A42"/>
+    <rect x="850" y="230" width="185" height="22" rx="11" fill="#333A42"/>
+    <rect x="1060" y="228" width="112" height="26" rx="13" fill="#462D2A"/>
+    <circle cx="1076" cy="241" r="4" fill="#FF654D"/>
+    <rect x="1087" y="237" width="72" height="8" rx="4" fill="#F38A70"/>
+    <rect x="220" y="285" width="190" height="470" fill="#F4F6F8"/>
+    <path d="M220 285h190" stroke="#E6E9ED"/>
+    <path d="M252 324h104" stroke="#28313B" stroke-width="8" stroke-linecap="round"/>
+    <path d="M252 376h122" stroke="#D6DBE1" stroke-width="12" stroke-linecap="round"/>
+    <path d="M252 420h122" stroke="#D6DBE1" stroke-width="12" stroke-linecap="round"/>
+    <path d="M252 464h122" stroke="#D6DBE1" stroke-width="12" stroke-linecap="round"/>
+    <path d="M252 508h122" stroke="#D6DBE1" stroke-width="12" stroke-linecap="round"/>
+    <path d="M252 552h122" stroke="#D6DBE1" stroke-width="12" stroke-linecap="round"/>
+    <rect x="239" y="589" width="152" height="46" rx="12" fill="#FFF0EC"/>
+    <rect x="252" y="606" width="96" height="11" rx="5.5" fill="#ED604A"/>
+    <text x="452" y="344" fill="#232A33" font-family="Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="2">HUORONG CRM</text>
+    <text x="452" y="380" fill="#79828D" font-family="Arial, sans-serif" font-size="16" letter-spacing="1.5">CUSTOMER RELATIONSHIP MANAGEMENT</text>
+    <rect x="452" y="410" width="210" height="102" rx="14" fill="#F7F8FA" stroke="#E7EAEE"/>
+    <rect x="682" y="410" width="210" height="102" rx="14" fill="#F7F8FA" stroke="#E7EAEE"/>
+    <rect x="912" y="410" width="258" height="102" rx="14" fill="#F7F8FA" stroke="#E7EAEE"/>
+    <rect x="474" y="433" width="74" height="10" rx="5" fill="#C7CDD4"/>
+    <rect x="474" y="462" width="112" height="24" rx="6" fill="#38434F"/>
+    <rect x="704" y="433" width="74" height="10" rx="5" fill="#C7CDD4"/>
+    <rect x="704" y="462" width="112" height="24" rx="6" fill="#38434F"/>
+    <rect x="934" y="433" width="74" height="10" rx="5" fill="#C7CDD4"/>
+    <rect x="934" y="462" width="112" height="24" rx="6" fill="#38434F"/>
+    <rect x="452" y="536" width="718" height="154" rx="14" fill="#FBFCFD" stroke="#E7EAEE"/>
+    <path d="M452 580h718M452 620h718M452 660h718" stroke="#E9ECF0"/>
+    <path d="M672 536v154M886 536v154M1030 536v154" stroke="#E9ECF0"/>
+    <rect x="474" y="552" width="98" height="9" rx="4.5" fill="#D8DDE3"/>
+    <rect x="694" y="552" width="68" height="9" rx="4.5" fill="#D8DDE3"/>
+    <rect x="908" y="552" width="60" height="9" rx="4.5" fill="#D8DDE3"/>
+    <rect x="1052" y="552" width="74" height="9" rx="4.5" fill="#D8DDE3"/>
+    <rect x="474" y="595" width="132" height="9" rx="4.5" fill="#E2E5E9"/>
+    <rect x="694" y="595" width="84" height="9" rx="4.5" fill="#E2E5E9"/>
+    <rect x="908" y="595" width="62" height="9" rx="4.5" fill="#E2E5E9"/>
+    <rect x="1052" y="589" width="82" height="22" rx="11" fill="#FFF0EC"/>
+    <rect x="1064" y="596" width="58" height="8" rx="4" fill="#EA654E"/>
+    <rect x="474" y="635" width="118" height="9" rx="4.5" fill="#E2E5E9"/>
+    <rect x="694" y="635" width="96" height="9" rx="4.5" fill="#E2E5E9"/>
+    <rect x="908" y="635" width="62" height="9" rx="4.5" fill="#E2E5E9"/>
+    <rect x="1052" y="629" width="82" height="22" rx="11" fill="#FFF5E8"/>
+    <rect x="1064" y="636" width="58" height="8" rx="4" fill="#E8A144"/>
+  </g>
+  <rect x="1002" y="756" width="216" height="54" rx="27" fill="url(#accent)"/>
+  <circle cx="1033" cy="783" r="7" fill="#fff"/>
+  <text x="1054" y="790" fill="#fff" font-family="Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="1">DESIGN IN PROGRESS</text>
+</svg>
