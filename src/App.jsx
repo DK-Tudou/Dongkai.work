@@ -53,6 +53,69 @@ const projectGroups = [
   { id: 'materials', title: '品牌物料视觉', enTitle: 'BRAND MATERIALS & VISUAL IDENTITY' },
 ]
 
+const practiceArtworks = [
+  { number: '01', title: 'Panamera 4S', maker: 'PORSCHE', image: assetPath('/practice-gallery/porsche-panamera-4s.webp'), enTitle: 'Panamera 4S', folder: '汽车鼠绘', enFolder: 'Car Sketches', background: '#f5f5f3' },
+  { number: '02', title: '纽约', maker: 'UNIQUE WAY', image: assetPath('/practice-gallery/travel-new-york.webp'), enTitle: 'New York', folder: '无二之旅', enFolder: 'Unique Way', background: '#b5cbd2' },
+  { number: '03', title: 'F-150 Raptor', maker: 'FORD', image: assetPath('/practice-gallery/ford-f150-raptor.webp'), enTitle: 'F-150 Raptor', folder: '汽车鼠绘', enFolder: 'Car Sketches', background: '#f5f5f3' },
+  { number: '04', title: '日本', maker: 'UNIQUE WAY', image: assetPath('/practice-gallery/travel-japan.webp'), enTitle: 'Japan', folder: '无二之旅', enFolder: 'Unique Way', background: '#fff0d4' },
+  { number: '05', title: '鼠绘练习', maker: 'DONG KAI', image: assetPath('/practice-gallery/personal-sketch.webp'), enTitle: 'Digital sketch', folder: '个人作品', enFolder: 'Personal Works', background: '#e9aac1' },
+  { number: '06', title: 'RS 6 Avant', maker: 'AUDI', image: assetPath('/practice-gallery/audi-rs6.webp'), enTitle: 'RS 6 Avant', folder: '汽车鼠绘', enFolder: 'Car Sketches', background: '#f5f5f3' },
+  { number: '07', title: '圣诞', maker: 'UNIQUE WAY', image: assetPath('/practice-gallery/travel-christmas.webp'), enTitle: 'Christmas', folder: '无二之旅', enFolder: 'Unique Way', background: '#bd1731' },
+  { number: '08', title: '911 GT2 RS', maker: 'PORSCHE', image: assetPath('/practice-gallery/porsche-911-gt2-rs.webp'), enTitle: '911 GT2 RS', folder: '汽车鼠绘', enFolder: 'Car Sketches', background: '#f5f5f3' },
+  { number: '09', title: '北海道', maker: 'UNIQUE WAY', image: assetPath('/practice-gallery/travel-hokkaido.webp'), enTitle: 'Hokkaido', folder: '无二之旅', enFolder: 'Unique Way', background: '#cbd8d5' },
+  { number: '10', title: '赛道练习', maker: 'LAMBORGHINI', image: assetPath('/practice-gallery/lamborghini-study.webp'), enTitle: 'Track study', folder: '汽车鼠绘', enFolder: 'Car Sketches', background: '#f5f5f3' },
+  { number: '11', title: '罗瓦涅米', maker: 'UNIQUE WAY', image: assetPath('/practice-gallery/travel-rovaniemi.webp'), enTitle: 'Rovaniemi', folder: '无二之旅', enFolder: 'Unique Way', background: '#303c5c' },
+  { number: '12', title: 'G-Class', maker: 'MERCEDES-BENZ', image: assetPath('/practice-gallery/mercedes-g-class.webp'), enTitle: 'G-Class', folder: '汽车鼠绘', enFolder: 'Car Sketches', background: '#f5f5f3' },
+  { number: '13', title: '威尼斯', maker: 'UNIQUE WAY', image: assetPath('/practice-gallery/travel-venice.webp'), enTitle: 'Venice', folder: '无二之旅', enFolder: 'Unique Way', background: '#efe0da' },
+  { number: '14', title: 'C4D 场景插画', maker: 'UNIQUE WAY', image: assetPath('/practice-gallery/travel-c4d.webp'), enTitle: 'C4D illustration', folder: '无二之旅', enFolder: 'Unique Way', background: '#45c6c9' },
+  { number: '15', title: '手机主题', maker: 'DONG KAI', image: assetPath('/practice-gallery/mobile-theme.webp'), enTitle: 'Mobile theme', folder: '个人作品', enFolder: 'Personal Works', background: '#1ac9d5' },
+  { number: '16', title: '鼠绘 2', maker: 'DONG KAI', image: assetPath('/practice-gallery/personal-sketch-02.webp'), enTitle: 'Digital sketch 02', folder: '个人作品', enFolder: 'Personal Works', background: '#ffffff' },
+]
+
+function PracticeGalleryPage({ english }) {
+  const [activeIndex, setActiveIndex] = useState(null)
+  const activeArtwork = activeIndex === null ? null : practiceArtworks[activeIndex]
+  useEffect(() => {
+    if (!activeArtwork) return
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    const onKeyDown = event => {
+      if (event.key === 'Escape') setActiveIndex(null)
+      if (event.key === 'ArrowRight') setActiveIndex(index => (index + 1) % practiceArtworks.length)
+      if (event.key === 'ArrowLeft') setActiveIndex(index => (index - 1 + practiceArtworks.length) % practiceArtworks.length)
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [activeArtwork])
+
+  return <section className="practice-page auto-gallery-page" aria-labelledby="practice-title">
+    <div className="auto-gallery-topline"><span>DAILY PRACTICE · SKETCHBOOK</span><span>PERSONAL WORKS&nbsp; / &nbsp;CONTINUOUSLY UPDATED</span></div>
+    <div className="auto-gallery-grid" aria-label={english ? 'Personal practice gallery' : '日常练习作品'}>
+      {practiceArtworks.map((artwork, index) => <button className="auto-art-card" key={artwork.number} type="button" style={{ '--art-background': artwork.background }} onClick={() => setActiveIndex(index)} aria-label={`${english ? 'View' : '查看'} ${artwork.maker} ${english ? artwork.enTitle : artwork.title}`}>
+        <img src={artwork.image} alt={`${artwork.maker} ${artwork.enTitle}`} loading={index < 3 ? 'eager' : 'lazy'} fetchPriority={index === 0 ? 'high' : undefined}/>
+        <span className="auto-art-folder">#{english ? artwork.enFolder : artwork.folder}</span>
+        <span className="auto-art-caption"><span className="auto-art-number">{artwork.number}</span><span><strong>{artwork.maker}</strong><small>{english ? artwork.enTitle : artwork.title}</small></span><ArrowUpRight size={16} aria-hidden="true"/></span>
+      </button>)}
+    </div>
+    <div className="auto-gallery-headline">
+      <p className="work-kicker">{english ? 'PERSONAL PRACTICE · IN PROGRESS' : '日常练习 · 持续更新'}</p>
+      <h1 id="practice-title">{english ? <>Taking it easy, <span>more soon…</span></> : <>有点偷懒，<span>持续更新...</span></>}</h1>
+    </div>
+    {activeArtwork && <div className="auto-lightbox" role="dialog" aria-modal="true" aria-labelledby="auto-lightbox-title" onClick={() => setActiveIndex(null)}>
+      <button className="auto-lightbox-close" type="button" onClick={() => setActiveIndex(null)} aria-label={english ? 'Close image' : '关闭大图'}><X size={21}/></button>
+      <button className="auto-lightbox-nav auto-lightbox-prev" type="button" aria-label={english ? 'Previous image' : '上一张'} onClick={event => { event.stopPropagation(); setActiveIndex(index => (index - 1 + practiceArtworks.length) % practiceArtworks.length) }}><ArrowLeft size={19}/></button>
+      <figure className="auto-lightbox-figure" onClick={event => event.stopPropagation()}>
+        <img src={activeArtwork.image} alt={`${activeArtwork.maker} ${activeArtwork.enTitle}`}/>
+        <figcaption id="auto-lightbox-title"><span>{activeArtwork.number} / {String(practiceArtworks.length).padStart(2, '0')}</span><strong>{activeArtwork.maker}</strong><span>{english ? activeArtwork.enTitle : activeArtwork.title}</span></figcaption>
+      </figure>
+      <button className="auto-lightbox-nav auto-lightbox-next" type="button" aria-label={english ? 'Next image' : '下一张'} onClick={event => { event.stopPropagation(); setActiveIndex(index => (index + 1) % practiceArtworks.length) }}><ArrowRight size={19}/></button>
+    </div>}
+  </section>
+}
+
 const strengths = [
   { icon: PenTool, index: '01', title: '从问题定义到体验落地', enTitle: 'From problem framing to delivery', text: '围绕业务目标、用户反馈与现有数据识别关键问题，梳理核心任务和使用场景；通过信息架构、流程设计与原型验证方案，再推进视觉设计、开发协同、验收与上线复盘。', enText: 'I use business goals, user feedback, and available data to frame the problem and define key tasks. Information architecture, user flows, and prototypes validate the direction before visual design, development collaboration, QA, and launch review.', tags: ['体验策略', '交互设计', '视觉设计'], enTags: ['Experience strategy', 'Interaction', 'Visual design'] },
   { icon: Layers3, index: '02', title: '复杂业务与系统体验', enTitle: 'Complex products, made clear', text: '面向安全、CRM、销售与数据分析等业务，梳理角色权限、状态逻辑及异常流程，明确高密度信息与关键操作路径；通过一致的导航、反馈和交互规则，降低使用成本，提升跨模块协同效率。', enText: 'Across security, CRM, sales, and analytics products, I clarify roles, permissions, system states, and edge cases. Consistent navigation, feedback, and interaction patterns make dense workflows easier to understand and use.', tags: ['企业级产品', '信息架构', '业务系统'], enTags: ['Enterprise products', 'Information architecture', 'Business systems'] },
@@ -341,7 +404,6 @@ function App() {
   const [contactSource, setContactSource] = useState('nav')
   const [contactCopyStatus, setContactCopyStatus] = useState('')
   const [english, setEnglish] = useState(false)
-  const [ambientVideoReady, setAmbientVideoReady] = useState(false)
   const navActionsRef = useRef(null)
   const contactCloseTimerRef = useRef(null)
   const clearContactCloseTimer = () => {
@@ -375,24 +437,6 @@ function App() {
   useEffect(() => {
     document.documentElement.lang = english ? 'en' : 'zh-CN'
   }, [english])
-  useEffect(() => {
-    const connection = navigator.connection
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (reducedMotion || connection?.saveData || ['slow-2g', '2g'].includes(connection?.effectiveType)) return
-    let idleId = 0
-    let timeoutId = 0
-    const enableVideoWhenIdle = () => {
-      if ('requestIdleCallback' in window) idleId = window.requestIdleCallback(() => setAmbientVideoReady(true), { timeout: 1500 })
-      else timeoutId = window.setTimeout(() => setAmbientVideoReady(true), 500)
-    }
-    if (document.readyState === 'complete') enableVideoWhenIdle()
-    else window.addEventListener('load', enableVideoWhenIdle, { once: true })
-    return () => {
-      window.removeEventListener('load', enableVideoWhenIdle)
-      if (idleId) window.cancelIdleCallback?.(idleId)
-      if (timeoutId) window.clearTimeout(timeoutId)
-    }
-  }, [])
   useEffect(() => {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reducedMotion || !('IntersectionObserver' in window)) return
@@ -584,11 +628,8 @@ function App() {
     </header>
     {showPortfolio && activeSection === 'work' && <a className="nav-practice" href="#practice" aria-label={english ? 'Daily practice' : '日常练习'} title={english ? 'Daily practice' : '日常练习'} onClick={closeMenu}><Sparkles size={20} aria-hidden="true"/></a>}
     </div>
-    {showPractice ? <section className="practice-page" aria-labelledby="practice-title"><h1 id="practice-title">{english ? <>Taking it a little easy,<br/><span>more soon…</span></> : <>有点偷懒，<br/><span>持续更新中…</span></>}</h1></section> : <>
+    {showPractice ? <PracticeGalleryPage english={english}/> : <>
     <section className="hero" id="top">
-      {ambientVideoReady && !showPortfolio && !showPractice && <video className="hero-video" autoPlay muted loop playsInline preload="none" aria-hidden="true">
-        <source src={assetPath('/hero-ambient.mp4')} type="video/mp4" />
-      </video>}
       <div className="hero-grain" aria-hidden="true" />
       <div className="hero-light-flow" aria-hidden="true" />
       <div className="hero-content wrap">
