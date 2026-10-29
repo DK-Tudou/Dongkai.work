@@ -37,7 +37,10 @@ const projects = [
   {
     number: '07', id: 'h5', type: 'visual', title: 'H5 互动设计', enTitle: 'Interactive H5 Experience', subtitle: '以轻量互动连接品牌与用户', enSubtitle: 'Connecting brands and audiences through interaction', category: 'H5 互动', enCategory: 'INTERACTIVE EXPERIENCE', period: '2019 — 2021', image: assetPath('/project-thumbnails/h5.webp'), className: 'card-visual', galleryCount: 1,
   },
-  {
+    {
+    number: '14', id: 'enterprise-manual', type: 'materials', title: '火绒安全企业版中心 2.0 手册', enTitle: 'Huorong Security Enterprise Center 2.0 Handbook', subtitle: '记录企业版中心 2.0 的产品设计与使用规范', enSubtitle: 'Product design and usage guidelines for Enterprise Center 2.0', category: '品牌物料视觉 · 产品手册', enCategory: 'BRAND MATERIALS · PRODUCT HANDBOOK', image: assetPath('/project-media/vi-manual/enterprise-center-2.0/page-01.webp'), media: Array.from({ length: 40 }, (_, index) => assetPath(`/project-media/vi-manual/enterprise-center-2.0/page-${String(index + 1).padStart(2, '0')}.webp`)), galleryCount: 40, flipbook: true,
+  },
+{
     number: '10', id: 'vi-manual', type: 'materials', title: '火绒安全 VI 手册', enTitle: 'Huorong Security Visual Identity Manual', subtitle: '以统一的视觉识别，建立清晰连贯的品牌表达', enSubtitle: 'A cohesive visual identity for a clear, consistent brand presence', category: '品牌物料视觉 · VI 手册', enCategory: 'BRAND MATERIALS · VISUAL IDENTITY MANUAL', period: '2021 — 2026', image: assetPath('/project-thumbnails/vi-manual.webp'), media: Array.from({ length: 46 }, (_, index) => assetPath(`/project-media/vi-manual/page-${String(index + 1).padStart(2, '0')}.webp`)), galleryCount: 46, flipbook: true,
   },
   {
@@ -223,14 +226,14 @@ function ProjectDetailPage({ project, english, contactOpen, contactSource, setCo
       }}>
         <figure className="manual-page">
           <div className="manual-page-art">
-            <img src={project.media[activePage - 1]} alt={`${title} · ${english ? 'page' : '第'} ${activePage}${english ? '' : ' 页'}`} loading="eager" decoding="async" fetchPriority="high" />
+            <img src={project.media[activePage - 1]} alt={`${project.id === 'enterprise-manual' ? (english ? 'Enterprise Center 2.0 Handbook' : '企业版中心 2.0 手册') : title} · ${english ? 'page' : '第'} ${activePage}${english ? '' : ' 页'}`} loading="eager" decoding="async" fetchPriority="high" />
             {project.id === 'vi-manual' && activePage === 1 && <span className="manual-cover-date">Visual Brand Guidelines @ 2024 VIS</span>}
             {turnAnimation && <div className={`manual-turn-sheet turn-${turnAnimation.direction}`} aria-hidden="true" onAnimationEnd={() => setTurnAnimation(null)}>
               <div className="manual-turn-face is-front"><img src={project.media[turnAnimation.from - 1]} alt="" />{project.id === 'vi-manual' && turnAnimation.from === 1 && <span className="manual-cover-date">Visual Brand Guidelines @ 2024 VIS</span>}</div>
               <div className="manual-turn-face is-back"><img src={project.media[turnAnimation.to - 1]} alt="" />{project.id === 'vi-manual' && turnAnimation.to === 1 && <span className="manual-cover-date">Visual Brand Guidelines @ 2024 VIS</span>}</div>
             </div>}
           </div>
-          <figcaption><span>{project.id === 'wu-vi-manual' ? (english ? 'UNIQUEWAY · BRAND BOOK' : '无二之旅 · 品牌视觉画册') : (english ? 'VISUAL IDENTITY SYSTEM' : '火绒安全 · 品牌视觉识别系统')}</span><span>{String(activePage).padStart(2, '0')} / {String(project.galleryCount).padStart(2, '0')}</span></figcaption>
+          <figcaption><span>{project.id === 'wu-vi-manual' ? (english ? 'UNIQUEWAY · BRAND BOOK' : '无二之旅 · 品牌视觉画册') : project.id === 'enterprise-manual' ? (english ? 'ENTERPRISE CENTER 2.0 · HANDBOOK' : '企业版中心 2.0 · 产品手册') : (english ? 'VISUAL IDENTITY SYSTEM' : '火绒安全 · 品牌视觉识别系统')}</span><span>{String(activePage).padStart(2, '0')} / {String(project.galleryCount).padStart(2, '0')}</span></figcaption>
         </figure>
       </div>
       <nav className="manual-controls" aria-label={english ? 'Manual page controls' : '手册翻页控制'}>
